@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import Clock from './components/Clock';
+import '../main.css';
+import Clock from './Clock';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         
         <Clock />
       </div>
