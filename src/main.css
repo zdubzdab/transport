@@ -8,18 +8,17 @@ body {
   text-align: center;
 }
 
+/*clock */
 #board{
+  text-align: center;
   background-color: #0C87D3;
   position: relative;
   left: 70%;
   color: white;
   font-size: 18px;
   font-weight: bold;
-
-
-
 }
-#time {
+#board-time {
   margin-top: -10px;
   margin-bottom: 0px;
   font-size: 38px;
