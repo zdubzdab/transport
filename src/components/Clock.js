@@ -33,16 +33,16 @@ var Clock = React.createClass({
     var hours = currentdate.getHours();    
     // add leading zero, first convert hours to string
     hours = hours + "";
-    if( hours.length == 1 ){ hours = "0" + hours; }
+    if( hours.length === 1 ){ hours = "0" + hours; }
 
     var minutes = currentdate.getMinutes();
     // add leading zero, first convert hours to string
     minutes = minutes + "";
-    if( minutes.length == 1 ){ minutes = "0" + minutes; }
+    if( minutes.length === 1 ){ minutes = "0" + minutes; }
 
     var seconds = currentdate.getSeconds();
     seconds = seconds + "";
-    if( seconds.length == 1 ){ seconds = "0" + seconds; }
+    if( seconds.length === 1 ){ seconds = "0" + seconds; }
     this.setState({
       hours: hours,
       minutes: minutes,

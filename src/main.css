@@ -12,8 +12,6 @@ body {
 #board{
   text-align: center;
   background-color: #0C87D3;
-  position: relative;
-  left: 70%;
   color: white;
   font-size: 18px;
   font-weight: bold;

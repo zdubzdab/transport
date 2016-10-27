@@ -6,7 +6,11 @@ var Station = React.createClass({
 
   getInitialState: function() {
     return {
-      jobs: []
+      station: "",
+      hours: [],
+      minutes: [],
+      seconds: [],
+      name: [],
     }
   },
 
@@ -14,23 +18,50 @@ var Station = React.createClass({
     var _this = this;
     this.serverRequest = 
       axios
-        .get("http://codepen.io/jobs.json")
-        .then(function(result) {   
-          console.log(result)
+        .get("https://api.irail.be/liveboard/?station=Brussels&fast=true&format=json")
+        .then(function(result) {  
+
+
+          var name = _this.getKeyValue(result.data.departures.departure)
+          console.log(name)
           _this.setState({
-            jobs: result.data.jobs
+            name: name,
+            station: result.data.station,
+            hours: (new Date(parseInt(result.data.timestamp)*1000)).getHours(),
+            minutes: (new Date(parseInt(result.data.timestamp)*1000)).getMinutes(),
+            seconds: (new Date(parseInt(result.data.timestamp)*1000)).getSeconds(),
           });
         })
+  },
+
+  getKeyValue (array){
+    var array_keys = []
+
+    array.forEach(function(el) {
+      array_keys.push(el.station)
+      console.log(el.station)
+    });
+    console.log(array_keys)
+    return array_keys
   },
 
   componentWillUnmount: function() {
     this.serverRequest.abort();
   },
 
+  getTime (hours){
+    hours = hours + "";
+    if( hours.length === 1 ){ hours = "0" + hours; }
+    return hours
+  },
+
   render: function() {
     return (
-      <div>
-        {/* Render stuff here */}
+      <div className="col-md-9" id="station">
+        <h3>{this.state.station}</h3>
+        <b>{this.getTime(this.state.hours)}:{this.getTime(this.state.minutes)}:
+          {this.getTime(this.state.seconds)}</b>
+        <b>{this.state.name}</b>
       </div>
     )
   }
