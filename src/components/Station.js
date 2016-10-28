@@ -6,11 +6,7 @@ var Station = React.createClass({
 
   getInitialState: function() {
     return {
-      station: "",
-      hours: [],
-      minutes: [],
-      seconds: [],
-      name: [],
+      response: [],
     }
   },
 
@@ -20,48 +16,50 @@ var Station = React.createClass({
       axios
         .get("https://api.irail.be/liveboard/?station=Brussels&fast=true&format=json")
         .then(function(result) {  
-
-
-          var name = _this.getKeyValue(result.data.departures.departure)
-          console.log(name)
           _this.setState({
-            name: name,
-            station: result.data.station,
-            hours: (new Date(parseInt(result.data.timestamp)*1000)).getHours(),
-            minutes: (new Date(parseInt(result.data.timestamp)*1000)).getMinutes(),
-            seconds: (new Date(parseInt(result.data.timestamp)*1000)).getSeconds(),
+            response: result.data,
           });
         })
   },
 
-  getKeyValue (array){
-    var array_keys = []
-
-    array.forEach(function(el) {
-      array_keys.push(el.station)
-      console.log(el.station)
-    });
-    console.log(array_keys)
-    return array_keys
-  },
-
   componentWillUnmount: function() {
     this.serverRequest.abort();
+
   },
 
-  getTime (hours){
-    hours = hours + "";
-    if( hours.length === 1 ){ hours = "0" + hours; }
-    return hours
+  getTime (time){
+    time = time.toString();
+    if( time.length === 1 ){ time = "0" + time; }
+    return time
+  },
+
+  pullTime (response){
+    //, 10 in order to fix warning
+    var hours = (new Date(parseInt(response.timestamp, 10)*1000)).getHours()
+    var minutes = (new Date(parseInt(response.timestamp, 10)*1000)).getMinutes()
+    var seconds = (new Date(parseInt(response.timestamp, 10)*1000)).getSeconds()
+    var hour = this.getTime(hours)
+    var minute = this.getTime(minutes)
+    var second = this.getTime(seconds)
+    var result = hour + ":" + minute + ":" + second
+    return result
   },
 
   render: function() {
+    if (this.state.response.length > 0){
+      debugger
+      var list_trains = this.state.response.departures.departure.map(function(train) {
+        return  <ul>
+                  <li>{train.station}</li>
+                </ul>
+      });
+    }
     return (
       <div className="col-md-9" id="station">
-        <h3>{this.state.station}</h3>
-        <b>{this.getTime(this.state.hours)}:{this.getTime(this.state.minutes)}:
-          {this.getTime(this.state.seconds)}</b>
-        <b>{this.state.name}</b>
+        <h3>{this.state.response.station}</h3>
+        <p>{this.pullTime(this.state.response)}</p>
+
+        <p>{list_trains}</p>
       </div>
     )
   }

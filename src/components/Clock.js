@@ -24,12 +24,9 @@ var Clock = React.createClass({
 
   setTime: function(){
     //transform date to Belgium
-    Date.prototype.minusHour = function(h){
-        this.setHours(this.getHours()-h);
-        return this;
-    }
-
-    var currentdate = new Date().minusHour(1);
+    var currentdate = new Date();
+    currentdate.setHours(currentdate.getHours() - 1);
+    
     var that = this
 
     this.setState({
@@ -40,7 +37,7 @@ var Clock = React.createClass({
   },
 
   getTime (time){
-    time = time + "";
+    time = time.toString();
     if( time.length === 1 ){ time = "0" + time; }
     return time
   },
