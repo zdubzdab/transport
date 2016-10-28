@@ -30,25 +30,21 @@ var Clock = React.createClass({
     }
 
     var currentdate = new Date().minusHour(1);
-    var hours = currentdate.getHours();    
-    // add leading zero, first convert hours to string
-    hours = hours + "";
-    if( hours.length === 1 ){ hours = "0" + hours; }
+    var that = this
 
-    var minutes = currentdate.getMinutes();
-    // add leading zero, first convert hours to string
-    minutes = minutes + "";
-    if( minutes.length === 1 ){ minutes = "0" + minutes; }
-
-    var seconds = currentdate.getSeconds();
-    seconds = seconds + "";
-    if( seconds.length === 1 ){ seconds = "0" + seconds; }
     this.setState({
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds
+      hours: that.getTime(currentdate.getHours()),
+      minutes: that.getTime(currentdate.getMinutes()),
+      seconds: that.getTime(currentdate.getSeconds())
     });
   },
+
+  getTime (time){
+    time = time + "";
+    if( time.length === 1 ){ time = "0" + time; }
+    return time
+  },
+
   componentWillMount: function(){
     this.setTime();
     this.setDate();
