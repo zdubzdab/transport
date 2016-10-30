@@ -21,3 +21,7 @@ body {
   margin-bottom: 0px;
   font-size: 38px;
 }
+
+#station {
+  text-align: left;
+}

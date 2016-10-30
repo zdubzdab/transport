@@ -24,7 +24,6 @@ var Station = React.createClass({
 
   componentWillUnmount: function() {
     this.serverRequest.abort();
-
   },
 
   getTime (time){
@@ -35,31 +34,30 @@ var Station = React.createClass({
 
   pullTime (response){
     //, 10 in order to fix warning
-    var hours = (new Date(parseInt(response.timestamp, 10)*1000)).getHours()
-    var minutes = (new Date(parseInt(response.timestamp, 10)*1000)).getMinutes()
-    var seconds = (new Date(parseInt(response.timestamp, 10)*1000)).getSeconds()
+    var hours = (new Date(parseInt(response, 10)*1000)).getHours()
+    var minutes = (new Date(parseInt(response, 10)*1000)).getMinutes()
+    var seconds = (new Date(parseInt(response, 10)*1000)).getSeconds()
     var hour = this.getTime(hours)
     var minute = this.getTime(minutes)
     var second = this.getTime(seconds)
     var result = hour + ":" + minute + ":" + second
+    debugger
     return result
   },
 
   render: function() {
-    if (this.state.response.length > 0){
-      debugger
-      var list_trains = this.state.response.departures.departure.map(function(train) {
-        return  <ul>
-                  <li>{train.station}</li>
-                </ul>
+    var that = this
+    if (Array.isArray(this.state.response) === false){
+      var list_trains = this.state.response.departures.departure.map(function(train, i) {
+        return  <li key={i}>{train.station}  {that.pullTime(train.time)}
+                 delay:{train.delay/60}   platform: {train.platforminfo.name}</li>  
       });
     }
     return (
       <div className="col-md-9" id="station">
         <h3>{this.state.response.station}</h3>
-        <p>{this.pullTime(this.state.response)}</p>
-
-        <p>{list_trains}</p>
+        <p>{this.pullTime(this.state.response.timestamp)}</p>
+        <ol>{list_trains}</ol>
       </div>
     )
   }
