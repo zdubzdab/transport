@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5 {
+  text-align: center;
+}
 body {
   margin: 0;
   padding: 0;
@@ -16,12 +19,50 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
 #board-time {
   margin-top: -10px;
   margin-bottom: 0px;
   font-size: 38px;
 }
 
+/*station */
 #station {
   text-align: left;
+  font-size: 18px;
+  margin-top: 40px
+}
+
+#plus-minutes {
+  color: red;
+  padding-left: 20px;
+}
+
+#canceled {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+ol {
+  list-style-type: none; /* Заглавные буквы */
+ }
+
+#station-head {
+  width: 898px;
+  margin-top: 20px;
+  margin-left: 40px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #D3D3D3; 
+  border-right: 1px solid #D3D3D3;
+  border-left: 1px solid #D3D3D3;  
+}
+
+#list-trains{
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-right: 1px solid #D3D3D3; 
+  border-left: 1px solid #D3D3D3; 
+  border-top: 1px solid #D3D3D3; 
 }
