@@ -46,11 +46,13 @@ var Clock = React.createClass({
     this.setTime();
     this.setDate();
   },
+
   componentDidMount: function(){
      window.setInterval(function () {
       this.setTime();
     }.bind(this), 1000);
   },
+  
   render: function() {
     return(
       <div className="col-md-3" id="board">

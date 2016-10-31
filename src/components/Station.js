@@ -20,10 +20,26 @@ var Station = React.createClass({
             response: result.data,
           });
         })
+    this.update();
+  },
+
+  update (){
+    window.setInterval(function () {
+      var _this = this;
+      this.serverRequest = 
+        axios
+          .get("https://api.irail.be/liveboard/?station=Brussels&fast=true&format=json")
+          .then(function(result) {  
+            _this.setState({
+              response: result.data,
+            });
+          })
+    }.bind(this), 20000);
   },
 
   componentWillUnmount: function() {
     this.serverRequest.abort();
+    this.update();
   },
 
   getTime (time){
