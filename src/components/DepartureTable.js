@@ -2,7 +2,7 @@ import '../main.css';
 import React from 'react';
 import axios from 'axios'
 
-var Station = React.createClass({
+var DepartureTable = React.createClass({
 
   getInitialState: function() {
     return {
@@ -105,4 +105,4 @@ var Station = React.createClass({
   }
 });
 
-module.exports = Station;
+module.exports = DepartureTable;
