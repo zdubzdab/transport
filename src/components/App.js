@@ -8,9 +8,10 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        <Cities />
         <DepartureTable />
         <Clock />
-        <Cities />
+
       </div>
     );
   }

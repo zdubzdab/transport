@@ -1,29 +1,38 @@
 import '../main.css';
 import React from 'react';
-import axios from 'axios';
-import data from '../belgium_stations_names.json';
+import stations from '../belgium_stations_names.json';
 
 var Cities = React.createClass({
 
-  getInitialState: function() {
-    return {
-      stations_names: data
-    }
-
+  getInitialState: function(){
+    return { 
+      searchString: ''
+    };
   },
 
-  componentDidMount: function() {
-
-
+  handleChange: function(e){
+    this.setState({searchString: e.target.value});
   },
 
   render: function() {
-    return(
-      <div className="col-md-10" id="cities">
-        <p>Brussels, Belgium</p>
-        <p>{this.state.stations_names}</p>
-      </div>
-    )
+    //search
+    var libraries = stations,
+        searchString = this.state.searchString.trim().toLowerCase();
+    libraries = libraries.filter(function(name){
+      return name.toLowerCase().match(searchString);
+    });
+
+    var list_stations = libraries.map(function(name, i){
+      if(searchString.length > 0){
+        return <li key={i}> {name}</li>
+      }
+    });
+    return <div>
+            <input type="text" value={this.state.searchString}
+                onChange={this.handleChange} placeholder="Type here" />
+            <ol>{list_stations}</ol>
+          </div>;
   }
 });
+
 module.exports = Cities;

@@ -28,7 +28,6 @@ var Clock = React.createClass({
     currentdate.setHours(currentdate.getHours() - 1);
     
     var that = this
-
     this.setState({
       hours: that.getTime(currentdate.getHours()),
       minutes: that.getTime(currentdate.getMinutes()),
