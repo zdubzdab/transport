@@ -1,36 +1,27 @@
 import '../main.css';
 import React from 'react';
 import axios from 'axios';
+import data from '../belgium_stations_names.json';
 
 var Cities = React.createClass({
 
   getInitialState: function() {
     return {
-      response: [],
+      stations_names: data
     }
+
   },
 
   componentDidMount: function() {
-    var _this = this;
-    this.serverRequest = 
-      axios
-        .get("https://irail.be/stations/NMBS?q={query}", {
-          headers: { 'Content-Type': 'text/plain',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'}
-        })
-        .then(function(result) {  
-          _this.setState({
-            response: result,
-          });
-        })
+
+
   },
 
   render: function() {
     return(
       <div className="col-md-10" id="cities">
         <p>Brussels, Belgium</p>
-        <p>{this.state.response}</p>
+        <p>{this.state.stations_names}</p>
       </div>
     )
   }
