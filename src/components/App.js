@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../main.css';
 import Clock from './Clock';
 import DepartureTable from './DepartureTable';
+import Cities from './Cities';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="app">
         <DepartureTable />
         <Clock />
+        <Cities />
       </div>
     );
   }

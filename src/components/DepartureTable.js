@@ -1,6 +1,6 @@
 import '../main.css';
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
 var DepartureTable = React.createClass({
 
