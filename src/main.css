@@ -11,6 +11,19 @@ body {
   text-align: center;
 }
 
+/*head*/
+#head {
+  background-color: #ebebe0;
+  height: 60px;
+}
+
+#head #text {
+  margin-top: 8px; 
+  font-weight: bold;
+  font-size: 30px;
+  color: #0C87D3;
+}
+
 /*clock */
 #board{
   text-align: center;
@@ -18,14 +31,19 @@ body {
   color: white;
   font-size: 18px;
   font-weight: bold;
+  margin-left: 77px;
+  margin-top: 30px;
 }
 
-#board-time {
+#board #time {
   margin-top: -10px;
   margin-bottom: 0px;
   font-size: 38px;
 }
 
+#board #brussel {
+  margin-top: 6px;
+}
 /*DepartureTable */
 #station {
   text-align: left;
@@ -49,7 +67,7 @@ ol {
  }
 
 #station-head {
-  width: 909px;
+  width: 898px;
   margin-top: 20px;
   margin-left: 40px;
   padding-bottom: 5px;
@@ -60,10 +78,29 @@ ol {
   border-bottom: 1px solid #D3D3D3;
 }
 
-#list-trains{
+#list-trains {
   padding-bottom: 8px;
   padding-top: 8px;
   border-right: 1px solid #D3D3D3; 
   border-left: 1px solid #D3D3D3; 
   border-bottom: 1px solid #D3D3D3; 
+}
+
+/*cities*/
+#cities {
+  text-align: left;
+}
+
+#search-input {
+  width: 220px;
+}
+
+#search-panel {
+  margin-left: 25px;
+  margin-top: 30px;
+}
+
+.stations-list {
+  margin-left: -20px;
+  margin-top: 10px;
 }

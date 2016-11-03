@@ -55,8 +55,8 @@ var Clock = React.createClass({
   render: function() {
     return(
       <div className="col-md-3" id="board">
-        <p>Brussels, Belgium</p>
-        <p id="board-time">{this.state.hours}:{this.state.minutes}:
+        <p id="brussel">Brussels, Belgium</p>
+        <p id="time">{this.state.hours}:{this.state.minutes}:
           {this.state.seconds}</p>
         <p>{this.state.dayName} {this.state.day}  
          {this.state.monthName} {this.state.year}</p>
