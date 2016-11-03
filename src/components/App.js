@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../main.css';
 import Clock from './Clock';
-import DepartureTable from './DepartureTable';
 import Cities from './Cities';
 import Head from './Head';
 
@@ -12,7 +11,7 @@ class App extends Component {
         <Head />
         <Cities />
         <Clock />
-        <DepartureTable />
+        
       </div>
     );
   }

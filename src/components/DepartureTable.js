@@ -7,14 +7,38 @@ var DepartureTable = React.createClass({
   getInitialState: function() {
     return {
       response: [],
+      stationName: this.props.station
     }
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.station !== this.state.stationName) {
+      this.setState({ stationName: nextProps.station });
+      var _this = this;
+      this.serverRequest = 
+        axios
+          .get(_this.pastStationAfterChangeInput("https://api.irail.be/liveboard/?station=","&fast=true&format=json", nextProps.station))
+          .then(function(result) {  
+            _this.setState({
+              response: result.data,
+            });
+          })
+    }
+  },
+
+  pastStationAfterChangeInput (first, second, station){
+    return first + station + second
+  },
+
+  pastStation (first, second){
+    return first + this.state.stationName + second
   },
 
   componentDidMount: function() {
     var _this = this;
     this.serverRequest = 
       axios
-        .get("https://api.irail.be/liveboard/?station=Brussels&fast=true&format=json")
+        .get(_this.pastStation("https://api.irail.be/liveboard/?station=","&fast=true&format=json"))
         .then(function(result) {  
           _this.setState({
             response: result.data,
@@ -28,7 +52,7 @@ var DepartureTable = React.createClass({
       var _this = this;
       this.serverRequest = 
         axios
-          .get("https://api.irail.be/liveboard/?station=Brussels&fast=true&format=json")
+          .get(_this.pastStation("https://api.irail.be/liveboard/?station=","&fast=true&format=json"))
           .then(function(result) {  
             _this.setState({
               response: result.data,
@@ -90,7 +114,7 @@ var DepartureTable = React.createClass({
       });
     }
     return (
-      <div className="col-md-9" id="station">
+      <div className="col-md-12" id="station">
         <h3>{this.state.response.station}</h3>
         <div id="station-head" className="col-md-12">
           <span className="col-md-1">Pl.  </span> 

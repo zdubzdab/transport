@@ -11,6 +11,9 @@ body {
   text-align: center;
 }
 
+a {
+  cursor: pointer
+}
 /*head*/
 #head {
   background-color: #ebebe0;
@@ -31,8 +34,9 @@ body {
   color: white;
   font-size: 18px;
   font-weight: bold;
-  margin-left: 77px;
   margin-top: 30px;
+  position: relative;
+    left: -30px;
 }
 
 #board #time {
@@ -67,7 +71,7 @@ ol {
  }
 
 #station-head {
-  width: 898px;
+  width: 879px;
   margin-top: 20px;
   margin-left: 40px;
   padding-bottom: 5px;
@@ -79,6 +83,7 @@ ol {
 }
 
 #list-trains {
+  width: 879px;
   padding-bottom: 8px;
   padding-top: 8px;
   border-right: 1px solid #D3D3D3; 
