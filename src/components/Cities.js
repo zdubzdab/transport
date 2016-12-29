@@ -12,28 +12,30 @@ var Cities = React.createClass({
     };
   },
 
-  handleChange: function(e){
+  handleChangeInput: function(e){
     this.setState({searchString: e.target.value});
+    var opts = document.getElementById('stations-list').childNodes;
+    for (var i = 0; i < opts.length; i++) {
+      if (opts[i].value === e.target.value) {
+        this.renderDepartTable(opts[i].value)
+        break;
+      }
+    }
   },
 
-  handleClick: function(name){
-    this.setState({station: name});
+  renderDepartTable: function(e){
+    this.setState({station: e});
     this.setState({searchString: ''});
   },
 
   render: function() {
-    //search
-    var libraries = stations,
-        searchString = this.state.searchString.trim().toLowerCase();
-    libraries = libraries.filter(function(name){
-      return name.toLowerCase().match(searchString);
-    });
-
-    var list_stations = libraries.map(function(name, i){
+    var searchString = this.state.searchString;
+    var list_stations = stations.map(function(name, i){
       if(searchString.length > 0){
-        return <li key={i}><a ref={i} onClick={this.handleClick.bind(this, name)}>{name}</a></li>
+        return <option key={i} value={name}>{name}</option>
       }
-    }.bind(this));
+      return false;
+    });
 
     if (this.state.station !== ''){
       var children = <DepartureTable station={this.state.station}/>
@@ -43,9 +45,11 @@ var Cities = React.createClass({
             <div id="search-panel">
               <label htmlFor="search-input">Please type station name</label>
               <input className="form-control" id="search-input" type="text"
-                    value={this.state.searchString} onChange={this.handleChange}
-                    ref="search" placeholder="Type here..." />
-              <ol className="stations-list">{list_stations}</ol>
+                    value={this.state.searchString} onChange={this.handleChangeInput}
+                    ref="search" placeholder="Type here..." list="stations-list"/>
+              <datalist id="stations-list">
+                {list_stations}
+              </datalist> 
             </div>
             {children}
           </div>;
