@@ -73,7 +73,7 @@ var DepartureTable = React.createClass({
   },
 
   pullTime (response){
-    //, 10 in order to fix warning
+    //10 in order to fix warning
     var hours = (new Date(parseInt(response, 10)*1000)).getHours()
     var minutes = (new Date(parseInt(response, 10)*1000)).getMinutes()
     var seconds = (new Date(parseInt(response, 10)*1000)).getSeconds()

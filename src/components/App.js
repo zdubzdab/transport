@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../main.css';
 import Clock from './Clock';
-import Cities from './Cities';
+import SearchAndTable from './SearchAndTable';
 import Head from './Head';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="app">
         <Head />
-        <Cities />
+        <SearchAndTable />
         <Clock />
         
       </div>

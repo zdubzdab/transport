@@ -3,7 +3,7 @@ import React from 'react';
 import stations from '../belgium_stations_names.json';
 import DepartureTable from './DepartureTable';
 
-var Cities = React.createClass({
+var SearchAndTable = React.createClass({
 
   getInitialState: function(){
     return { 
@@ -17,6 +17,7 @@ var Cities = React.createClass({
     var opts = document.getElementById('stations-list').childNodes;
     for (var i = 0; i < opts.length; i++) {
       if (opts[i].value === e.target.value) {
+        console.log(this)
         this.renderDepartTable(opts[i].value)
         break;
       }
@@ -41,7 +42,7 @@ var Cities = React.createClass({
       var children = <DepartureTable station={this.state.station}/>
     }
 
-    return <div className="col-md-9" id="cities">
+    return <div className="col-md-9" id="search-and-table">
             <div id="search-panel">
               <label htmlFor="search-input">Please type station name</label>
               <input className="form-control" id="search-input" type="text"
@@ -56,4 +57,4 @@ var Cities = React.createClass({
   }
 });
 
-module.exports = Cities;
+module.exports = SearchAndTable;
