@@ -3,7 +3,7 @@ import React from 'react';
 import stations from '../belgium_stations_names.json';
 import DepartureTable from './DepartureTable';
 
-var SearchAndTable = React.createClass({
+var Search = React.createClass({
 
   getInitialState: function(){
     return { 
@@ -42,7 +42,8 @@ var SearchAndTable = React.createClass({
       var children = <DepartureTable station={this.state.station}/>
     }
 
-    return <div className="col-md-9" id="search-and-table">
+    return (
+          <div>
             <div id="search-panel">
               <label htmlFor="search-input">Please type station name</label>
               <input className="form-control" id="search-input" type="text"
@@ -53,8 +54,9 @@ var SearchAndTable = React.createClass({
               </datalist> 
             </div>
             {children}
-          </div>;
+          </div>
+    )
   }
 });
 
-module.exports = SearchAndTable;
+module.exports = Search;

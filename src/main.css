@@ -15,20 +15,28 @@ a {
   cursor: pointer
 }
 /*head*/
-#head {
-  background-color: #ebebe0;
+#head-section {
+  background-color: #F0F0F0;
   height: 60px;
 }
 
-#head #text {
+#head-section #logo {
+  text-align: left;
   margin-top: 8px; 
   font-weight: bold;
   font-size: 30px;
   color: #0C87D3;
 }
 
+#head-links {
+  margin-top: -45px;
+  margin-left: 1000px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 /*clock */
-#board{
+#clock-board{
   text-align: center;
   background-color: #0C87D3;
   color: white;
@@ -36,16 +44,16 @@ a {
   font-weight: bold;
   margin-top: 30px;
   position: relative;
-    left: -30px;
+  left: -30px;
 }
 
-#board #time {
+#clock-board #time {
   margin-top: -10px;
   margin-bottom: 0px;
   font-size: 38px;
 }
 
-#board #brussel {
+#clock-board #brussel {
   margin-top: 6px;
 }
 /*DepartureTable */
@@ -92,7 +100,7 @@ ol {
   border-bottom: 1px solid #D3D3D3; 
 }
 
-/*SearchAndTable*/
+/*Search*/
 #search-and-table {
   text-align: left;
 }

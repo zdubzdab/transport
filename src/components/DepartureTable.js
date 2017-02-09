@@ -17,7 +17,9 @@ var DepartureTable = React.createClass({
       var _this = this;
       this.serverRequest = 
         axios
-          .get(_this.pastStationAfterChangeInput("https://api.irail.be/liveboard/?station=","&fast=true&format=json", nextProps.station))
+          .get(_this.pastStationAfterChangeInput(
+            "https://api.irail.be/liveboard/?station=", "&fast=true&format=json",
+            nextProps.station))
           .then(function(result) {  
             _this.setState({
               response: result.data,
@@ -38,7 +40,8 @@ var DepartureTable = React.createClass({
     var _this = this;
     this.serverRequest = 
       axios
-        .get(_this.pastStation("https://api.irail.be/liveboard/?station=","&fast=true&format=json"))
+        .get(_this.pastStation("https://api.irail.be/liveboard/?station=",
+          "&fast=true&format=json"))
         .then(function(result) {  
           _this.setState({
             response: result.data,
@@ -52,7 +55,8 @@ var DepartureTable = React.createClass({
       var _this = this;
       this.serverRequest = 
         axios
-          .get(_this.pastStation("https://api.irail.be/liveboard/?station=","&fast=true&format=json"))
+          .get(_this.pastStation("https://api.irail.be/liveboard/?station=",
+            "&fast=true&format=json"))
           .then(function(result) {  
             _this.setState({
               response: result.data,
@@ -108,8 +112,11 @@ var DepartureTable = React.createClass({
                 <span className="col-md-1">{train.platforminfo.name}</span>
                 <b className="col-md-6">{train.station}</b>
                 <span className="col-md-1">{that.pullTime(train.time)}</span>
-                <span className="col-md-2" id="plus-minutes">{that.addSignPlus(train.delay)}</span>
-                <span id="canceled" className="col-md-2">{that.checkCanceled(train.canceled)}
+                <span className="col-md-2" id="plus-minutes">
+                  {that.addSignPlus(train.delay)}
+                </span>
+                <span id="canceled" className="col-md-2">
+                  {that.checkCanceled(train.canceled)}
                 </span></li>  
       });
     }
