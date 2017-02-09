@@ -12,20 +12,19 @@ var Search = React.createClass({
     };
   },
 
-  handleChangeInput: function(e){
-    this.setState({searchString: e.target.value});
+  handleChangeSearch: function(data){
+    this.setState({searchString: data.target.value});
     var opts = document.getElementById('stations-list').childNodes;
     for (var i = 0; i < opts.length; i++) {
-      if (opts[i].value === e.target.value) {
-        console.log(this)
+      if (opts[i].value === data.target.value) {
         this.renderDepartTable(opts[i].value)
         break;
       }
     }
   },
 
-  renderDepartTable: function(e){
-    this.setState({station: e});
+  renderDepartTable: function(data){
+    this.setState({station: data});
     this.setState({searchString: ''});
   },
 
@@ -45,9 +44,10 @@ var Search = React.createClass({
     return (
           <div>
             <div id="search-panel">
-              <label htmlFor="search-input">Please type station name</label>
+              <label htmlFor="search-input" id="label-search-input">
+              Please type station name</label>
               <input className="form-control" id="search-input" type="text"
-                    value={this.state.searchString} onChange={this.handleChangeInput}
+                    value={this.state.searchString} onChange={this.handleChangeSearch}
                     ref="search" placeholder="Type here..." list="stations-list"/>
               <datalist id="stations-list">
                 {list_stations}

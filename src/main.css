@@ -100,13 +100,17 @@ ol {
   border-bottom: 1px solid #D3D3D3; 
 }
 
-/*Search*/
+/*Search station*/
 #search-and-table {
   text-align: left;
 }
 
-#search-input {
-  width: 220px;
+.form-control{
+  width: 250px;
+}
+
+#label-search-input {
+  margin-right: 810px;
 }
 
 #search-panel {
@@ -117,4 +121,21 @@ ol {
 .stations-list {
   margin-left: -20px;
   margin-top: 10px;
+}
+
+/*Create route*/
+.search-route-panel {
+  margin-left: 200px;
+  margin-top: 50px;
+  width: 550px;
+}
+
+#depart-input {
+
+}
+
+#arrival-input {
+  position: relative;
+  top: -34px;
+  left: 300px;
 }
