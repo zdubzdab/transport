@@ -28,6 +28,10 @@ var Route = React.createClass({
     }
   },
 
+  createRoute (e){
+    console.log(e)
+  },
+
   render: function() {
     var depInput = this.state.depInput;
     var dep_list_stations = stations.map(function(name, i){
@@ -50,20 +54,22 @@ var Route = React.createClass({
         <h4>Route creation</h4>
         <br></br>
         <input className="form-control" id="depart-input" type="text"
-              value={this.state.depInput}
-              onChange={this.handleChangeStationInput.bind(this, 'dep-stations-list')}
-              ref="search" placeholder="Departure station" list="dep-stations-list"/>
+          value={this.state.depInput}
+          onChange={this.handleChangeStationInput.bind(this, 'dep-stations-list')}
+          ref="search" placeholder="Departure station" list="dep-stations-list"/>
         <datalist id="dep-stations-list">
           {dep_list_stations}
         </datalist>
 
         <input className="form-control" id="arrival-input" type="text"
-              value={this.state.arrivalInput}
-              onChange={this.handleChangeStationInput.bind(this, 'arrival-stations-list')}
-              ref="search" placeholder="Arrival station" list="arrival-stations-list"/>
+          value={this.state.arrivalInput}
+          onChange={this.handleChangeStationInput.bind(this, 'arrival-stations-list')}
+          ref="search" placeholder="Arrival station" list="arrival-stations-list"/>
         <datalist id="arrival-stations-list">
           {ar_list_stations}
-        </datalist> 
+        </datalist>
+        <button onClick={this.createRoute} className="btn btn-primary">Create route
+        </button>
       </div>
     )
   }

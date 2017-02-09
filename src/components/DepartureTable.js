@@ -17,9 +17,10 @@ var DepartureTable = React.createClass({
       var _this = this;
       this.serverRequest = 
         axios
-          .get(_this.pastStationAfterChangeInput(
-            "https://api.irail.be/liveboard/?station=", "&fast=true&format=json",
-            nextProps.station))
+          .get(_this.pastStation(
+            "https://api.irail.be/liveboard/?station=", nextProps.station,
+            "&fast=true&format=json",
+            ))
           .then(function(result) {  
             _this.setState({
               response: result.data,
@@ -28,12 +29,8 @@ var DepartureTable = React.createClass({
     }
   },
 
-  pastStationAfterChangeInput (first, second, station){
+  pastStation (first, station, second){
     return first + station + second
-  },
-
-  pastStation (first, second){
-    return first + this.state.stationName + second
   },
 
   componentDidMount: function() {
@@ -41,7 +38,7 @@ var DepartureTable = React.createClass({
     this.serverRequest = 
       axios
         .get(_this.pastStation("https://api.irail.be/liveboard/?station=",
-          "&fast=true&format=json"))
+          _this.state.stationName, "&fast=true&format=json"))
         .then(function(result) {  
           _this.setState({
             response: result.data,
@@ -56,18 +53,13 @@ var DepartureTable = React.createClass({
       this.serverRequest = 
         axios
           .get(_this.pastStation("https://api.irail.be/liveboard/?station=",
-            "&fast=true&format=json"))
+            _this.state.stationName, "&fast=true&format=json"))
           .then(function(result) {  
             _this.setState({
               response: result.data,
             });
           })
     }.bind(this), 20000);
-  },
-
-  componentWillUnmount: function() {
-    this.serverRequest.abort();
-    this.update();
   },
 
   getTime (time){
