@@ -1,7 +1,7 @@
 import '../main.css';
 import React from 'react';
 import axios from 'axios';
-import {pullTime} from './TimeFormatting.js';
+import {pullTime} from '../lib/TimeFormatting.js';
 
 var RouteTable = React.createClass({
 

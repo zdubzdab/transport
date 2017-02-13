@@ -1,6 +1,6 @@
 import '../main.css';
 import React from 'react';
-import {getTime} from './TimeFormatting.js';
+import {getTime} from '../lib/TimeFormatting.js';
 
 var Clock = React.createClass({
 
