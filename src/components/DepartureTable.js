@@ -1,7 +1,8 @@
 import '../main.css';
 import React from 'react';
 import axios from 'axios';
-
+import {pullTime} from './TimeFormatting.js';
+ 
 var DepartureTable = React.createClass({
 
   getInitialState: function() {
@@ -19,8 +20,7 @@ var DepartureTable = React.createClass({
         axios
           .get(_this.pastStation(
             "https://api.irail.be/liveboard/?station=", nextProps.station,
-            "&fast=true&format=json",
-            ))
+            "&fast=true&format=json"))
           .then(function(result) {  
             _this.setState({
               response: result.data,
@@ -62,24 +62,6 @@ var DepartureTable = React.createClass({
     }.bind(this), 20000);
   },
 
-  getTime (time){
-    time = time.toString();
-    if( time.length === 1 ){ time = "0" + time; }
-    return time
-  },
-
-  pullTime (response){
-    //10 in order to fix warning
-    var hours = (new Date(parseInt(response, 10)*1000)).getHours()
-    var minutes = (new Date(parseInt(response, 10)*1000)).getMinutes()
-    var seconds = (new Date(parseInt(response, 10)*1000)).getSeconds()
-    var hour = this.getTime(hours)
-    var minute = this.getTime(minutes)
-    var second = this.getTime(seconds)
-    var result = hour + ":" + minute + ":" + second
-    return result
-  },
-
   checkCanceled(response){
     if (response !== "0") {
       return "canceled"
@@ -103,7 +85,7 @@ var DepartureTable = React.createClass({
         return  <li key={i} className="col-md-12" id="list-trains">
                 <span className="col-md-1">{train.platforminfo.name}</span>
                 <b className="col-md-6">{train.station}</b>
-                <span className="col-md-1">{that.pullTime(train.time)}</span>
+                <span className="col-md-1">{pullTime(train.time)}</span>
                 <span className="col-md-2" id="plus-minutes">
                   {that.addSignPlus(train.delay)}
                 </span>

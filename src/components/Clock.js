@@ -1,5 +1,6 @@
 import '../main.css';
 import React from 'react';
+import {getTime} from './TimeFormatting.js';
 
 var Clock = React.createClass({
 
@@ -27,19 +28,12 @@ var Clock = React.createClass({
     //transform date to Belgium
     var currentdate = new Date();
     currentdate.setHours(currentdate.getHours() - 1);
-    
-    var that = this
-    this.setState({
-      hours: that.getTime(currentdate.getHours()),
-      minutes: that.getTime(currentdate.getMinutes()),
-      seconds: that.getTime(currentdate.getSeconds())
-    });
-  },
 
-  getTime (time){
-    time = time.toString();
-    if( time.length === 1 ){ time = "0" + time; }
-    return time
+    this.setState({
+      hours: getTime(currentdate.getHours()),
+      minutes: getTime(currentdate.getMinutes()),
+      seconds: getTime(currentdate.getSeconds())
+    });
   },
 
   componentWillMount: function(){

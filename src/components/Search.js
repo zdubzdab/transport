@@ -38,7 +38,7 @@ var Search = React.createClass({
     });
 
     if (this.state.station !== ''){
-      var children = <DepartureTable station={this.state.station}/>
+      var departure_table = <DepartureTable station={this.state.station}/>
     }
 
     return (
@@ -53,7 +53,7 @@ var Search = React.createClass({
                 {list_stations}
               </datalist> 
             </div>
-            {children}
+            {departure_table}
           </div>
     )
   }
