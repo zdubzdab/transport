@@ -1,6 +1,5 @@
 import '../main.css';
 import React from 'react';
-import axios from 'axios';
 import {pullTime} from '../lib/TimeFormatting.js';
 import {getRequest} from '../lib/AxiosRequest.js';
 
@@ -17,23 +16,23 @@ var DepartureTable = React.createClass({
     if (nextProps.station !== this.state.stationName) {
       this.setState({ stationName: nextProps.station });
       var _this = this;
-      getRequest("https://api.irail.be/liveboard/?station=", nextProps.station,
-        "&fast=true&format=json", _this)
+      getRequest(_this, "https://api.irail.be/liveboard/?station=",
+        nextProps.station, "&fast=true&format=json")
     }
   },
 
   componentDidMount: function() {
     var _this = this;
-    getRequest("https://api.irail.be/liveboard/?station=",
-          _this.state.stationName, "&fast=true&format=json", _this)
+    getRequest(_this, "https://api.irail.be/liveboard/?station=",
+      _this.state.stationName, "&fast=true&format=json")
     this.update();
   },
 
   update (){
     window.setInterval(function () {
       var _this = this;
-      getRequest("https://api.irail.be/liveboard/?station=",
-            _this.state.stationName, "&fast=true&format=json", _this)
+      getRequest(_this, "https://api.irail.be/liveboard/?station=",
+        _this.state.stationName, "&fast=true&format=json")
     }.bind(this), 20000);
   },
 

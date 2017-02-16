@@ -47,8 +47,9 @@ var Search = React.createClass({
               <label htmlFor="search-input" id="label-search-input">
               Please type station name</label>
               <input className="form-control" id="search-input" type="text"
-                    value={this.state.searchString} onChange={this.handleChangeSearch}
-                    ref="search" placeholder="Type here..." list="stations-list"/>
+                value={this.state.searchString}
+                onChange={this.handleChangeSearch} ref="search"
+                placeholder="Type here..." list="stations-list"/>
               <datalist id="stations-list">
                 {list_stations}
               </datalist> 
