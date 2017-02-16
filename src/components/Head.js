@@ -22,9 +22,13 @@ var Head = React.createClass({
   render: function() {
     var desire_link
     if (this.state.search_component === true){
-      desire_link = <a href={"#"} onClick={this.changeSearchCompState }>Create route</a>
+      desire_link = <a href={"#"} onClick={this.changeSearchCompState }>
+        Create route
+      </a>
     } else {
-      desire_link = <a href={"#"} onClick={this.changeSearchCompState}>Find station</a>
+      desire_link = <a href={"#"} onClick={this.changeSearchCompState}>
+        Find station
+      </a>
     }
     return (
       <div>

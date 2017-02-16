@@ -57,7 +57,7 @@ a {
   margin-top: 6px;
 }
 /*DepartureTable */
-#station {
+#station-component {
   text-align: left;
   font-size: 18px;
   margin-top: 40px;
@@ -130,12 +130,23 @@ ol {
   width: 550px;
 }
 
-#depart-input {
-
-}
-
 #arrival-input {
   position: relative;
   top: -34px;
   left: 300px;
+}
+
+#list-routes {
+  width: 879px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-right: 1px solid #D3D3D3; 
+  border-left: 1px solid #D3D3D3; 
+  border-bottom: 1px solid #D3D3D3; 
+}
+
+#routes-panel{
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }

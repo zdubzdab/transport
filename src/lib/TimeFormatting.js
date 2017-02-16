@@ -15,3 +15,19 @@ export function getTime (time){
   if( time.length === 1 ){ time = "0" + time; }
   return time
 }
+
+export function secConvertToMinutes(response){
+  if (response === "0") {
+    return ""
+  } else {
+    return "+" + (parseInt(response, 10)/60).toString()
+  }
+}
+
+export function checkCanceled(response){
+  if (response !== "0") {
+    return "canceled"
+  } else {
+    return "       "
+  }
+}

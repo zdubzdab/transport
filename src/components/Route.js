@@ -34,8 +34,9 @@ var Route = React.createClass({
   makeButtonActive (){
     var depart_input = document.getElementById('depart-input').value
     var arrival_input = document.getElementById('arrival-input').value
-    if ((depart_input !== arrival_input) && (stations.indexOf(depart_input) !==- 1)
-      && (stations.indexOf(arrival_input) !==-1 )) {
+    if ((depart_input !== arrival_input) && 
+      (stations.indexOf(depart_input) !==- 1) &&
+      (stations.indexOf(arrival_input) !==-1 )) {
       this.setState({disabled: true});
     } else {
       this.setState({disabled: ""});
@@ -81,21 +82,27 @@ var Route = React.createClass({
           <br></br>
           <input className="form-control" id="depart-input" type="text"
             value={this.state.depInput}
-            onChange={this.handleChangeStationInput.bind(this, 'dep-stations-list')}
-            ref="search" placeholder="Departure station" list="dep-stations-list"/>
+            onChange={this.handleChangeStationInput.bind(this,
+              'dep-stations-list')}
+            ref="search" placeholder="Departure station"
+            list="dep-stations-list"/>
           <datalist id="dep-stations-list">
             {dep_list_stations}
           </datalist>
 
           <input className="form-control" id="arrival-input" type="text"
             value={this.state.arrivalInput}
-            onChange={this.handleChangeStationInput.bind(this, 'arrival-stations-list')}
-            ref="search" placeholder="Arrival station" list="arrival-stations-list"/>
+            onChange={this.handleChangeStationInput.bind(this,
+              'arrival-stations-list')}
+            ref="search" placeholder="Arrival station"
+            list="arrival-stations-list"/>
           <datalist id="arrival-stations-list">
             {ar_list_stations}
           </datalist>
-          <button onClick={this.handleClickButton} disabled={!this.state.disabled}
-            className="btn btn-primary">Create route</button>
+          <button onClick={this.handleClickButton}
+            disabled={!this.state.disabled}
+            className="btn btn-primary">Create route
+          </button>
         </div>
         <hr></hr>
         <div id="routes-panel" className="col-md-12">
