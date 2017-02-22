@@ -1,9 +1,10 @@
 import '../main.css';
 import React from 'react';
-import {pullTime} from '../lib/TimeFormatting.js';
 import {getRequest} from '../lib/AxiosRequest.js';
+import {pullTime} from '../lib/TimeFormatting.js';
 import {secConvertToMinutes} from '../lib/TimeFormatting.js';
 import {checkCanceled} from '../lib/TimeFormatting.js';
+import {convertToHours} from '../lib/TimeFormatting.js';
 
 var RouteTable = React.createClass({
 
@@ -44,7 +45,7 @@ var RouteTable = React.createClass({
           <li key={i} className="col-md-12" id="list-routes">
           <span className="col-md-3">{pullTime(obj.departure.time)}</span>
           <span className="col-md-3">{pullTime(obj.arrival.time)}</span>
-          <span className="col-md-3">{pullTime(obj.duration)}</span>
+          <span className="col-md-3">{convertToHours(obj.duration)}</span>
           <span className="col-md-1" id="plus-minutes">
           {secConvertToMinutes(obj.departure.delay)}</span>
           <span className="col-md-2">{checkCanceled(obj.arrival.canceled)}

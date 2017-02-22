@@ -3,11 +3,19 @@ export function pullTime (response){
   var hours = (new Date(parseInt(response, 10)*1000)).getHours()
   var minutes = (new Date(parseInt(response, 10)*1000)).getMinutes()
   var seconds = (new Date(parseInt(response, 10)*1000)).getSeconds()
-  var hour = getTime(hours)
-  var minute = getTime(minutes)
-  var second = getTime(seconds)
-  var result = hour + ":" + minute + ":" + second
-  return result
+  return convertToHHmmSS(hours, minutes, seconds)
+}
+
+export function convertToHours(response){
+  var sec_num = parseInt(response, 10);
+  var hours   = Math.floor(sec_num / 3600);
+  var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+  var seconds = sec_num - (hours * 3600) - (minutes * 60);
+  return convertToHHmmSS(hours, minutes, seconds)
+}
+
+function convertToHHmmSS(hours, minutes, seconds){
+  return getTime(hours) + ":" + getTime(minutes) + ":" + getTime(seconds)
 }
 
 export function getTime (time){
@@ -31,3 +39,4 @@ export function checkCanceled(response){
     return "       "
   }
 }
+
